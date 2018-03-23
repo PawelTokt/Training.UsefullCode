@@ -1,0 +1,87 @@
+﻿@model MobileStore.ViewModels.IndexViewModel
+
+@{
+  ViewData["Title"] = "MobileStore";
+}
+
+
+<a asp-action="Create" asp-controller="Phone" class="btn btn-default">Add new Phone</a>
+<a asp-action="Create" asp-controller="Company" class="btn btn-default">Add new Company</a>
+<p></p>
+<form method="get">
+  <div class="form-inline form-group">
+    <label class="control-label">Model: </label>
+    @Html.TextBox("name", Model.FilterViewModel.SelectedName, new { @class = "form-control" })
+    <label class="control-label">Manufactured: </label>
+    @Html.DropDownList("company", Model.FilterViewModel.Companies, new { @class = "form-control" })
+    <input type="submit" value="Filter" class="btn btn-default" />
+  </div>
+</form>
+<p></p>
+<table class="table">
+  <tr>
+    <th>
+      <a asp-action="Index"
+         asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
+         asp-route-name="@(Model.FilterViewModel.SelectedName)"
+         asp-route-company="@(Model.FilterViewModel.SelectedCompany)">
+        Model
+      </a>
+    </th>
+    <th>
+      <a asp-action="Index"
+         asp-route-sortOrder="@(Model.SortViewModel.CompanySort)"
+         asp-route-name="@(Model.FilterViewModel.SelectedName)"
+         asp-route-company="@(Model.FilterViewModel.SelectedCompany)">
+        Company
+      </a>
+    </th>
+    <th>
+      <a asp-action="Index"
+         asp-route-sortOrder="@(Model.SortViewModel.PriceSort)"
+         asp-route-name="@(Model.FilterViewModel.SelectedName)"
+         asp-route-company="@(Model.FilterViewModel.SelectedCompany)">
+        Price
+      </a>
+    </th>
+    <th></th>
+  </tr>
+  @foreach (var item in Model.Phones)
+  {
+    <tr>
+      <td>@item.Name</td>
+      <td>@item.Company.Name</td>
+      <td>@item.Price</td>
+      <td>
+        <a asp-action="Details" asp-controller="Phone" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Edit" asp-controller="Phone" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Delete" asp-controller="Phone" asp-route-id="@item.Id">Delete</a>
+      </td>
+    </tr>
+  }
+</table>
+<p></p>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+        asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+        asp-route-name="@(Model.FilterViewModel.SelectedName)"
+        asp-route-company="@(Model.FilterViewModel.SelectedCompany)"
+        asp-route-sortorder="@(Model.SortViewModel.Current)"
+        class="btn btn-default btn">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+     <a asp-action="Index"
+        asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+        asp-route-name="@(Model.FilterViewModel.SelectedName)"
+        asp-route-company="@(Model.FilterViewModel.SelectedCompany)"
+        asp-route-sortorder="@(Model.SortViewModel.Current)"
+        class="btn btn-default btn">
+            Вперед
+            <i class="glyphicon glyphicon-chevron-right"></i>
+     </a>
+}

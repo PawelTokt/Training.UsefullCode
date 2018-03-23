@@ -1,0 +1,25 @@
+﻿@model Phone
+@{
+  ViewData["Title"] = "MobileStore";
+}
+
+<h3>Add new Smartphone</h3>
+<form asp-action="Create" asp-controller="Phone">
+  <div class="form-group">
+    <label asp-for="Name" class="control-label">Model</label>
+    <input type="text" asp-for="Name" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label asp-for="CompanyId" class="control-label">Manufactured</label>
+    <select asp-for="CompanyId" class="form-control" asp-items="@ViewBag.Companies">
+      <option>---Select---</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label asp-for="Price" class="control-label">Price</label>
+    <input type="number" asp-for="Price" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Save" class="btn btn-default"/>
+  </div>
+</form>

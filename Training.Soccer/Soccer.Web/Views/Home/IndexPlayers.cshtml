@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Soccer.Web.Models.PlayerViewModel>
+
+@{
+    ViewBag.Title = "Players";
+}
+
+<h2>Players</h2>
+
+<p>
+    @Html.ActionLink("Add player ", "InsertPlayer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Position
+        </th>
+        <th>
+            Team
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "UpdatePlayer", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeletePlayer", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("All Teams ", "IndexTeams")
+</p>

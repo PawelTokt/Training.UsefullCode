@@ -1,0 +1,38 @@
+﻿@model Soccer.Web.Models.PlayerViewModel
+
+@{
+    ViewBag.Title = "UpdatePlayer";
+}
+
+<h2>UpdatePlayer</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>@Model.Name</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <p>
+            Name <br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+
+        <p>
+            Position <br />
+            @Html.EditorFor(model => model.Position)
+        </p>
+
+        <p>
+            Team <br />
+            @Html.DropDownListFor(model => model.TeamName, ViewBag.Teams as SelectList)
+        </p>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back", "IndexPlayers")
+</div>

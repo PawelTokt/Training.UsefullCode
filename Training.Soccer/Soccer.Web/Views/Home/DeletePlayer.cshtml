@@ -1,0 +1,26 @@
+﻿@model Soccer.Web.Models.PlayerViewModel
+@{
+    ViewBag.Title = "DeletePlayer";
+}
+
+<h2>DeletePlayer</h2>
+
+<dl>
+    <dt>Name</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt>Position</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Position)
+    </dd>
+    <dt>Team</dt>
+    <dd>
+        @Html.DisplayFor(model => model.TeamName)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}

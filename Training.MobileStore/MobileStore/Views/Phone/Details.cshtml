@@ -1,0 +1,15 @@
+﻿@model Phone
+
+@{
+    ViewData["Title"] = "MobileStore";
+}
+
+<h3>Smartphone @Model.Name</h3>
+<div>
+  <dl class="dl-horizontal">
+    <dt>Manufactured</dt>
+    <dd>@Model.Company.Name</dd>
+    <dt>Price</dt>
+    <dd>@Model.Price</dd>
+  </dl>
+</div>

@@ -1,0 +1,23 @@
+﻿@model Phone
+@{
+  ViewData["Title"] = "MobileStore";
+}
+
+<h3>Edit @Model.Name</h3>
+<form asp-action="Edit" asp-controller="Phone" asp-route-id="@Model.Id">
+  <div class="form-group">
+    <label asp-for="Name" class="control-label">Model</label>
+    <input type="text" asp-for="Name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="Company" class="control-label">Manufactured</label>
+    <select asp-for="CompanyId" class="form-control" asp-items="@ViewBag.Companies"></select>
+  </div>
+  <div class="form-group">
+    <label asp-for="Price" class="control-label">Price</label>
+    <input type="number" asp-for="Price" class="form-control" />
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Edit" class="btn btn-default" />
+  </div>
+</form>

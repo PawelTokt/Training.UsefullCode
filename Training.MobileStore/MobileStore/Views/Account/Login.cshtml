@@ -1,0 +1,25 @@
+﻿@model MobileStore.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "MobileStore";
+}
+
+<h2>Log In</h2>
+
+<a asp-action="Register" asp-controller="Account" class="btn btn-default">Registration</a>
+<p></p>
+<form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+  <div class="form-group">
+    <lable asp-for="Email">Enter Email</lable>
+    <input type="text" asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" />
+  </div>
+  <div class="form-group">
+    <lable asp-for="Password">Enter Password</lable>
+    <input asp-for="Password" class="form-control" />
+    <span asp-validation-for="Password" />
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Log in" class="btn btn-default" />
+  </div>
+</form>

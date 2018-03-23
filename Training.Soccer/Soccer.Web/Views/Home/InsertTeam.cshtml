@@ -1,0 +1,29 @@
+﻿@model Soccer.Web.Models.TeamViewModel
+
+@{
+    ViewBag.Title = "InsertTeam";
+}
+
+<h2>InsertTeam</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Team</legend>
+
+        <p>
+            Team Name <br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+        <p>
+            Coach <br />
+            @Html.EditorFor(model => model.Coach)
+        </p>
+        <p>
+            <input type="submit" value="Add team" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back", "IndexTeams")
+</div>
